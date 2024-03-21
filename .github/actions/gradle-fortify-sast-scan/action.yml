@@ -33,6 +33,10 @@ inputs:
     required: false
     description: "Version of Gradle to use"
     default: "7.3"
+  gradle_build_command:
+    required: false
+    description: "Gradle build command(s) to use"
+    default: "clean build -x test"
 outputs:
   scsast_scan_id:
     description: "ScanCentral SAST Scan/Job Id"
@@ -59,6 +63,7 @@ runs:
         fcli: latest
         sc-client: latest
         fod-uploader: skip
+        vuln-exporter: latest
         vuln-exporter: v2
         bugtracker-utility: skip
     # Login to Fortify on Demand fcli session

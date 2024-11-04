@@ -97,6 +97,15 @@ public class ProductController extends AbstractBaseController {
         return ResponseEntity.ok().body(retContent);
     }
 
+    @GetMapping("/xss-test")
+    @ResponseBody
+    public ResponseEntity<String> getSearchResults(@Param("keywords") String keywords) {
+
+    	String retContent = "Product search using: " + keywords;
+
+        return ResponseEntity.ok().body(retContent);
+    }
+
     @GetMapping(value = {"", "/"})
     public String index(Model model, @Param("keywords") String keywords, @Param("limit") Integer limit, Principal principal) {
         log.debug("Searching for products using keywords: " + ((keywords == null || keywords.isEmpty()) ? "none" : keywords));

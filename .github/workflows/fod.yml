@@ -149,7 +149,7 @@ jobs:
           # FOD_LOGIN_EXTRA_OPTS: --socket-timeout=60s
           FOD_RELEASE: ${{ format('{0}:{1}', steps.fortify-app-and-rel-name.outputs.app_name, steps.fortify-app-and-rel-name.outputs.release_name) }}
           #FOD_RELEASE: ${{ steps.fortify-app-and-rel-name.outputs.release_id  }}
-          #PACKAGE_EXTRA_OPTS: -oss
+          PACKAGE_EXTRA_OPTS: -oss
           DO_SETUP: true
           SETUP_EXTRA_OPTS: ${{ format('--sdlc-status Development --copy-from {0}', vars.FOD_PARENT_RELEASE_ID) }}
           DO_WAIT: true

@@ -1,6 +1,6 @@
-[![DevSecOps with Fortify on Demand](https://github.com/fortify-presales/IWA/actions/workflows/fod.yml/badge.svg)](https://github.com/fortify-presales/IWA/actions/workflows/fod.yml)
+[![DevSecOps with Fortify on Demand](https://github.com/fortify-presales/IWA-Java/actions/workflows/fod.yml/badge.svg)](https://github.com/fortify-presales/-Java/actions/workflows/fod.yml)
 
-# IWA (Insecure Web App) Pharmacy Direct
+# IWA (Insecure Web App) Pharmacy Direct - Java edition
 
 #### Table of Contents
 
@@ -210,7 +210,7 @@ In order to use ScanCentral SAST you will need to have entries in the `.env` sim
 ```
 SSC_URL=http://localhost:8080/ssc
 SSC_AUTH_TOKEN=6b16aa46-35d7-4ea6-98c1-8b780851fb37
-SSC_APP_NAME=IWA
+SSC_APP_NAME=IWA-Java
 SSC_APP_VER_NAME=main
 SCANCENTRAL_CTRL_URL=http://localhost:8080/scancentral-ctrl
 SCANCENTRAL_CTRL_TOKEN=96846342-1349-4e36-b94f-11ed96b9a1e3
@@ -424,7 +424,7 @@ For integrations with other pipeline tools please see [https://github.com/fortif
 
 Please see the [Contribution Guide](CONTRIBUTING.md) for information on how to develop and contribute.
 
-If you have any problems, please consult [GitHub Issues](https://github.com/fortify-presales/IWAPharmacyDirect/issues) to see if it has already been discussed.
+If you have any problems, please consult [GitHub Issues](https://github.com/fortify-presales/IWA-Java/issues) to see if it has already been discussed.
 
 ## Licensing
 

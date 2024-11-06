@@ -44,7 +44,7 @@ on:
 
 # Global environment variables
 env:
-  DEFAULT_APP_NAME: "IWA"
+  DEFAULT_APP_NAME: "IWA-Java"
   GRADLE_VERSION: "7.3"
 
 jobs:

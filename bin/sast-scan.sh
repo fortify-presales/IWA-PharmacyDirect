@@ -47,25 +47,15 @@ if [ -z "${AppVersion}" ]; then
     echo "Application Version has not been set in '.env'"; exit 1
 fi
 
-#
-# Build application to create classpath file
-echo Creating Classpath file
-./gradlew clean build writeClasspath -x test
-ClassPath=$(<build/classpath.txt)
-
 # Run the translation and scan
 #
 echo Running translation...
-
-sourceanalyzer $ScanSwitches $JVMArgs -b "$AppName" -jdk 11 -java-build-dir "build/classes" -cp $ClassPath \
-    -exclude "./src/main/resources/static/js/lib" -exclude "./src/main/resources/static/css/lib" \
-    -exclude "./node_modules" -exclude "src/main/resources/schema.sql" -exclude "src/main/resources/data.sql" \
-    "src/iac/**/*" "src/main/java/**/*" "src/main/resources/**/*" "Dockerfile*"
+sourceanalyzer $JVMArgs $ScanSwitches -b "$AppName"  -gradle -verbose ./gradlew clean build
 
 echo Running scan...
-sourceanalyzer $ScanSwitches $JVMArgs -b "$AppName" -debug -verbose \
+sourceanalyzer $JVMArgs $ScanSwitches -b "$AppName" -verbose -scan-policy $ScanPolicy \
     -rules etc/sast-custom-rules/example-custom-rules.xml -filter etc/sast-filters/example-filter.txt \
-    -scan-policy $ScanPolicy -build-project "$AppName" -build-version "$AppVersion" -build-label "SNAPSHOT" \
+    -build-project "$AppName" -build-version "$AppVersion" -build-label "SNAPSHOT" \
     -scan -f "${AppName}.fpr"
 
 # summarise issue count by analyzer

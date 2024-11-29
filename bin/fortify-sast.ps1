@@ -24,7 +24,7 @@ $SSCUrl = $EnvSettings['SSC_URL']
 $SSCAuthToken = $EnvSettings['SSC_AUTH_TOKEN'] # CIToken
 $JVMArgs = "-Xss256M"
 #$ScanSwitches = "-Dcom.fortify.sca.rules.enable_wi_correlation=true"
-$ScanSwitches = "-Dcom.fortify.sca.rules.enable_wi_correlation=true -Dcom.fortify.sca.Phase0HigherOrder.Languages=javascript,typescript -Dcom.fortify.sca.EnableDOMModeling=true -Dcom.fortify.sca.follow.imports=true -Dcom.fortify.sca.exclude.unimported.node.modules=true"
+$ScanSwitches = "-Dcom.fortify.sca.ProjectRoot=.fortify"
 
 # Test we have Fortify installed successfully
 Test-Environment
@@ -32,33 +32,20 @@ if ([string]::IsNullOrEmpty($AppName)) { throw "Application Name has not been se
 
 # Run the translation and scan
 
-# Compile the application if not already built
-$DependenciesFile = Join-Path -Path (Get-Location) -ChildPath "build\classpath.txt"
-if (-not (Test-Path -PathType Leaf -Path $DependenciesFile)) {
-    Write-Host Cleaning up workspace...
-    & sourceanalyzer '-Dcom.fortify.sca.ProjectRoot=.fortify' -b "$AppName" -clean
-    Write-Host Building application...
-    & .\gradlew clean build writeClasspath -x test
-}
-$ClassPath = Get-Content -Path $DependenciesFile
-
 Write-Host Running translation...
-& sourceanalyzer '-Dcom.fortify.sca.ProjectRoot=.fortify' $JVMArgs $ScanSwitches -b "$AppName" `
-    -jdk 11 -java-build-dir "build/classes" -cp $ClassPath -debug -verbose `
-    -exclude "./src/main/resources/static/js/lib" -exclude "./src/main/resources/static/css/lib" `
-    -exclude "./node_modules" -exclude "src/main/resources/schema.sql" -exclude "src/main/resources/data.sql" `
-    "src/iac/**/*" "src/main/java/**/*" "src/main/resources/**/*" "Dockerfile*"
+& sourceanalyzer $JVMArgs $ScanSwitches -b "$AppName" `
+    -gradle -verbose ./gradlew clean build
 
 Write-Host Running scan...
+# this example uses Scan Policy, Custom Rules and Filters
 & sourceanalyzer '-Dcom.fortify.sca.ProjectRoot=.fortify' $JVMArgs $ScanSwitches -b "$AppName" `
-    -cp $ClassPath  -java-build-dir "target/classes" -debug -verbose `
+    -verbose -scan-policy $ScanPolicy `
     -rules etc/sast-custom-rules/example-custom-rules.xml -filter etc/sast-filters/example-filter.txt `
-    -scan-policy $ScanPolicy `
     -build-project "$AppName" -build-version "$AppVersion" -build-label "SNAPSHOT" `
     -scan -f "$($AppName).fpr"
 
 # summarise issue count by analyzer
-& fprutility -information -analyzerIssueCounts -project "$($AppName).fpr"
+& FPRUtility -information -analyzerIssueCounts -project "$($AppName).fpr"
 
 if (-not $SkipPDF) {
     Write-Host Generating PDF report...

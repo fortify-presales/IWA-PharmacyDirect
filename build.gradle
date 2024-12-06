@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id "org.springframework.boot" version "2.7.17"
+    id 'org.cyclonedx.bom' version '1.10.0'
 }
 
 ext {
@@ -110,9 +111,6 @@ project.archivesBaseName = 'iwa'
 group = 'com.microfocus.example'
 version = '1.0'
 description = 'IWA (Insecure Web App) Pharmacy Direct - an insecure web application for use in Fortify demonstrations'
-// A JDK 1.8 is needed if the WebInspect Runtime Agent is being used?
-//sourceCompatibility = JavaVersion.VERSION_1_8
-//targetCompatibility = JavaVersion.VERSION_1_8
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
@@ -167,4 +165,33 @@ task writeClasspath() {
         new File(buildDir, "classpath.txt").text = files.collect { it.path }.join(';')
         //files.forEach{ f -> print("$f.path;")}
     }
+}
+
+cyclonedxBom {
+    // includeConfigs is the list of configuration names to include when generating the BOM (leave empty to include every configuration), regex is supported
+    includeConfigs = ["runtimeClasspath"]
+    // skipConfigs is a list of configuration names to exclude when generating the BOM, regex is supported
+    skipConfigs = ["compileClasspath", "testCompileClasspath"]
+    // skipProjects is a list of project names to exclude when generating the BOM
+    skipProjects = [rootProject.name, "yourTestSubProject"]
+    // Specified the type of project being built. Defaults to 'library'
+    projectType = "application"
+    // Specified the version of the CycloneDX specification to use. Defaults to '1.6'
+    schemaVersion = "1.6"
+    // Boms destination directory. Defaults to 'build/reports'
+    destination = file("build/reports")
+    // The file name for the generated BOMs (before the file format suffix). Defaults to 'bom'
+    outputName = "bom"
+    // The file format generated, can be xml, json or all for generating both. Defaults to 'all'
+    outputFormat = "json"
+    // Include BOM Serial Number. Defaults to 'true'
+    includeBomSerialNumber = false
+    // Include License Text. Defaults to 'true'
+    includeLicenseText = false
+    // Include resolution of full metadata for components including licenses. Defaults to 'true'
+    includeMetadataResolution = false
+    // Override component version. Defaults to the project version
+    componentVersion = "1.0"
+    // Override component name. Defaults to the project name
+    componentName = "IWA-Java"
 }

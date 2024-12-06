@@ -1,0 +1,29 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.6",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2024-12-06T10:51:53Z",
+    "tools" : [
+      {
+        "vendor" : "CycloneDX",
+        "name" : "cyclonedx-gradle-plugin",
+        "version" : "1.10.0"
+      }
+    ],
+    "component" : {
+      "type" : "application",
+      "bom-ref" : "pkg:maven/com.microfocus.example/iwa@1.0?type=jar",
+      "group" : "com.microfocus.example",
+      "name" : "iwa",
+      "version" : "1.0",
+      "purl" : "pkg:maven/com.microfocus.example/iwa@1.0?type=jar"
+    }
+  },
+  "dependencies" : [
+    {
+      "ref" : "pkg:maven/com.microfocus.example/iwa@1.0?type=jar",
+      "dependsOn" : [ ]
+    }
+  ]
+}

@@ -1,6 +1,24 @@
-# put all fingerprinted scancentral artifacts in single container
 overrides:
-  - pURL: "pkg:debricked/fingerprinting"
-    version: "latest" # (optional: if left out, we will determine the version)
+  - pURL: "pkg:npm/lodash"
+    version: "1.0.0" # (optional: if left out, we will determine the version)
     fileRegexes: # (Rust regex)
-      - "Libs/python/.*"
+      - "@types/lodash/.*"
+  - pURL: "pkg:maven/org.openjfx/javafx-base"
+    version: false # false means that we will determine the version
+    fileRegexes:
+      - "subpath/org.openjfx/.*"
+  - pURL: "pkg:maven/junit/junit"
+    fileRegexes:
+      - "junit-3.8.1/junit-3.8.1.jar"
+      - "junit-4.1/junit-4.1.jar"
+  - pURL: "" # empty pURL ignores matching fileRegexes during fingerprint analysis
+    fileRegexes:
+      - "test/.*"
+ignore:
+    packages:
+    - pURL: "pkg:npm/verdaccio"
+      version: "3.7.0" # optional: if omitted, ignores all versions
+    - pURL: "pkg:npm/chart.js"
+    - pURL: "pkg:nuget/simpleinjector"
+      version: "4.7.1"
+    - pURL: "pkg:maven/com.h2database/h2"

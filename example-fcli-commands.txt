@@ -26,3 +26,11 @@ fcli fod sast-scan wait-for ::curScan::
 fcli fod action ls
 fcli fod action get ci
 $ENV:FOD_RELEASE="IWA-Java [KAL]:klee2_dev"
+
+fcli aviator admin-config create --url https://ams.aviator.fortify.com -t demo_presales -p "file:C:\Users\klee2\OpenText Core\Keys\aviator_private_key.pem"
+fcli aviator token create -e "klee2@opentext.com" --end-date 2026-12-31 -n klee2_demo_xxx --save-token aviator_token.txt
+fcli aviator session login --url https://ams.aviator.fortify.com -t file:aviator_token.txt
+fcli aviator app ls
+fcli ssc session login
+... scan ...
+fcli aviator ssc audit --app IWA-Java [KAL] --av "IWA-Java [KAL]:main-with-aviator"

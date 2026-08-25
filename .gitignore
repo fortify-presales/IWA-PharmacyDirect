@@ -41,3 +41,5 @@ fcli.env
 /tools/ps_syntax_check.ps1
 aviator_token.txt
 UserRepositoryImpl_insecure_examples.txt
+/.sfdx/
+*.sarif

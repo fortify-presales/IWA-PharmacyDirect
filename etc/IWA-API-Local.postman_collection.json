@@ -1,0 +1,1213 @@
+{
+  "info": {
+    "_postman_id": "f1a9d3b2-0000-4c3a-9abc-000000000001",
+    "name": "IWA-API-Local",
+    "description": "Postman collection for local testing against http://localhost:8888 (uses JWT auth). Collection variables are used for local testing.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "messages",
+      "item": [
+        {
+          "name": "Finds messages by keyword(s)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/messages",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "messages"
+              ],
+              "query": [
+                {
+                  "key": "keywords",
+                  "value": ""
+                },
+                {
+                  "key": "offset",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a new message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/messages",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "messages"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sentDate\": \"2026-03-26T14:04:23.936Z\",\n  \"text\": \"string\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get users unread message count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/messages/unread-count/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "messages",
+                "unread-count",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete a message",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/messages/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "messages",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Find message by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/messages/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "messages",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update a message",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/messages/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "messages",
+                "{{id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sentDate\": \"2026-03-26T14:04:23.938Z\",\n  \"text\": \"string\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "orders",
+      "item": [
+        {
+          "name": "Find orders by keyword(s)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/orders",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orders"
+              ],
+              "query": [
+                {
+                  "key": "keywords",
+                  "value": ""
+                },
+                {
+                  "key": "offset",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a new order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/orders",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orders"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": null,\n  \"cart\": \"string\",\n  \"orderDate\": \"2026-03-26T14:04:23.939Z\",\n  \"orderNum\": \"string\",\n  \"shipped\": null,\n  \"shippedDate\": \"2026-03-26T14:04:23.939Z\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a order",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/orders/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orders",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Find order by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/orders/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orders",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update an order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/orders/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orders",
+                "{{id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": null,\n  \"cart\": \"string\",\n  \"orderDate\": \"2026-03-26T14:04:23.939Z\",\n  \"orderNum\": \"string\",\n  \"shipped\": null,\n  \"shippedDate\": \"2026-03-26T14:04:23.939Z\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "products",
+      "item": [
+        {
+          "name": "Find products by keyword(s)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "keywords",
+                  "value": ""
+                },
+                {
+                  "key": "offset",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a new product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/products",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "products"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"available\": null,\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"image\": \"string\",\n  \"inStock\": null,\n  \"name\": \"string\",\n  \"onSale\": null,\n  \"price\": null,\n  \"rating\": null,\n  \"salePrice\": null,\n  \"summary\": \"string\",\n  \"timeToStock\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/products/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "products",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Find product by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/products/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "products",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update a product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/products/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "products",
+                "{{id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"available\": null,\n  \"code\": \"string\",\n  \"description\": \"string\",\n  \"image\": \"string\",\n  \"inStock\": null,\n  \"name\": \"string\",\n  \"onSale\": null,\n  \"price\": null,\n  \"rating\": null,\n  \"salePrice\": null,\n  \"summary\": \"string\",\n  \"timeToStock\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get product image by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/products/{{id}}/image",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "products",
+                "{{id}}",
+                "image"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "reviews",
+      "item": [
+        {
+          "name": "Find reviews by product and keyword(s)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/reviews",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "reviews"
+              ],
+              "query": [
+                {
+                  "key": "pid",
+                  "value": "eec467c8-5de9-4c7c-8541-7b31614d31a0"
+                },
+                {
+                  "key": "keywords",
+                  "value": ""
+                },
+                {
+                  "key": "offset",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a new review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/reviews",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "reviews"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"string\",\n  \"productId\": \"00000000-0000-0000-0000-000000000000\",\n  \"rating\": null,\n  \"reviewDate\": \"2026-03-26T14:04:23.939Z\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a review",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/reviews/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "reviews",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Find review by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/reviews/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "reviews",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update an review",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/reviews/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "reviews",
+                "{{id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"string\",\n  \"productId\": \"00000000-0000-0000-0000-000000000000\",\n  \"rating\": null,\n  \"reviewDate\": \"2026-03-26T14:04:23.940Z\",\n  \"userId\": \"00000000-0000-0000-0000-000000000000\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "roles",
+      "item": [
+        {
+          "name": "Find roles by keyword(s)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/roles",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "keywords",
+                  "value": ""
+                },
+                {
+                  "key": "offset",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a new role",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/roles",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "roles"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"ROLE_ADMIN\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a role",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/roles/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "roles",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Find role Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/roles/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "roles",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update a role",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/roles/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "roles",
+                "{{id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"name\": \"ROLE_ADMIN\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "site",
+      "item": [
+        {
+          "name": "Check if email exists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/email-already-exists/{{email}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "email-already-exists",
+                "{{email}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/refresh-token",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "refresh-token"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Register a new user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/register-user",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "register-user"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"username\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Sign in",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/sign-in",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "sign-in"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "// Save JWT token to collection variable 'jwt_token' when sign-in succeeds",
+                    "if (pm.response.code === 200) {",
+                    "  try {",
+                    "    var jsonData = pm.response.json();",
+                    "    var token = jsonData.accessToken || jsonData.token || (jsonData.data && (jsonData.data.accessToken || jsonData.data.token));",
+                    "    if (token) {",
+                    "      pm.collectionVariables.set('jwt_token', token);",
+                    "      console.log('Saved jwt_token to collection variables');",
+                    "      pm.test('jwt_token saved', function () { pm.expect(token).to.exist; });",
+                    "    } else {",
+                    "      console.log('Sign-in response did not contain an access token');",
+                    "    }",
+                    "  } catch (e) {",
+                    "    console.log('Sign-in response not valid JSON or missing token:', e);",
+                    "  }",
+                    "} else {",
+                    "  console.log('Sign-in returned', pm.response.code, '- no token saved');",
+                    "}"
+                  ]
+                }
+              }
+            ]
+          },
+        {
+          "name": "Sign out",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/sign-out",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "sign-out"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get the site status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "status"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Subscribe a new user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/subscribe-user",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "subscribe-user"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"id\": null,\n  \"lastName\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Check if username is taken",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/site/username-already-exists/{{username}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "site",
+                "username-already-exists",
+                "{{username}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Find users by keyword(s)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "keywords",
+                  "value": ""
+                },
+                {
+                  "key": "offset",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a new user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "users"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"string\",\n  \"authorities\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"name\": \"ROLE_ADMIN\"\n    }\n  ],\n  \"city\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"country\": \"string\",\n  \"dateCreated\": \"2026-03-26T14:04:23.940Z\",\n  \"email\": \"string\",\n  \"enabled\": null,\n  \"firstName\": \"string\",\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"lastName\": \"string\",\n  \"mfaType\": \"MFA_NONE\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"secret\": \"string\",\n  \"state\": \"string\",\n  \"username\": \"string\",\n  \"verifyCode\": \"string\",\n  \"zip\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete a user",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/users/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "users",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Find user by UUID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v3/users/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "users",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update a user",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v3/users/{{id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "users",
+                "{{id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"string\",\n  \"authorities\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"name\": \"ROLE_ADMIN\"\n    }\n  ],\n  \"city\": \"string\",\n  \"confirmPassword\": \"string\",\n  \"country\": \"string\",\n  \"dateCreated\": \"2026-03-26T14:04:23.940Z\",\n  \"email\": \"string\",\n  \"enabled\": null,\n  \"firstName\": \"string\",\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"lastName\": \"string\",\n  \"mfaType\": \"MFA_NONE\",\n  \"password\": \"string\",\n  \"phone\": \"string\",\n  \"secret\": \"string\",\n  \"state\": \"string\",\n  \"username\": \"string\",\n  \"verifyCode\": \"string\",\n  \"zip\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8888",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "user1@localhost.com",
+      "type": "string"
+    },
+    {
+      "key": "password",
+      "value": "password",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "id",
+      "value": "bd5b9e2f-ac55-4e34-a76d-599b7e5b3308",
+      "type": "string"
+    },
+    {
+      "key": "email",
+      "value": "test1@localhost",
+      "type": "string"
+    },
+    {
+      "key": "pid",
+      "value": "38400000-8cf0-11bd-b23e-10b96e4ef00d",
+      "type": "string"
+    },
+    {
+      "key": "limit",
+      "value": "10",
+      "type": "string"
+    },
+    {
+      "key": "offset",
+      "value": "0",
+      "type": "string"
+    },
+    {
+      "key": "keywords",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
